@@ -10,7 +10,7 @@ const detectors = {
   emails: { label: "email", pattern: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi },
   apiKeys: { label: "secret", pattern: /\b(?:sk-[A-Za-z0-9_-]{12,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,})\b/g },
   bearerTokens: { label: "bearer-token", pattern: /\bBearer\s+[A-Za-z0-9._~+\/-]+=*/gi },
-  phoneNumbers: { label: "phone", pattern: /(?<!\d)(?:\+?\d[\d .()\-]{8,}\d)(?!\d)/g },
+  phoneNumbers: { label: "phone", pattern: /(?<!\d)(?:\+?\d[\d ()\-]{8,}\d)(?!\d)/g },
   ipv4: { label: "ipv4", pattern: /\b(?:\d{1,3}\.){3}\d{1,3}\b/g },
 };
 
