@@ -21,3 +21,9 @@ test("supports bearer token and phone detection", () => {
   assert.ok(result.matches.some((match) => match.type === "bearer-token"));
   assert.ok(result.matches.some((match) => match.type === "phone"));
 });
+
+test("does not classify dotted IPv4 addresses as phone numbers", () => {
+  const result = redactText("Server 192.168.10.44", { emails: false, apiKeys: false, bearerTokens: false, phoneNumbers: true, ipv4: false });
+  assert.equal(result.output, "Server 192.168.10.44");
+  assert.equal(result.matches.length, 0);
+});
