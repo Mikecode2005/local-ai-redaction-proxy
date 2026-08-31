@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Preview what your AI prompt exposes before it leaves your machine." />
+    <meta property="og:title" content="local-ai-redaction-proxy" />
+    <meta property="og:description" content="A local-first privacy layer for AI prompts and tool results." />
+    <meta property="og:image" content="/og-image.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>local-ai-redaction-proxy · keep secrets local</title>
+  </head>
+  <body>
+    <main class="shell">
+      <nav><a class="brand" href="/">local<span>/</span>redaction</a><a href="https://github.com/Mikecode2005/local-ai-redaction-proxy">GitHub ↗</a></nav>
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> Local-only playground · no provider connected</div>
+        <h1>Before the prompt leaves, <em>see what it reveals.</em></h1>
+        <p class="lede">A transparent privacy layer for AI workflows. Paste a synthetic prompt, choose your policy, and inspect the redacted payload without sending text anywhere.</p>
+        <div class="trust-row"><span>◎ runs in your browser</span><span>◇ deterministic patterns</span><span>↗ review before send</span></div>
+      </section>
+      <section class="workbench" aria-label="Redaction playground">
+        <div class="panel input-panel"><div class="panel-head"><div><p class="panel-kicker">01 · Inspect</p><h2>Incoming prompt</h2></div><button id="reset-demo" class="text-button" type="button">Restore example</button></div><label for="prompt-input">Prompt or tool result</label><textarea id="prompt-input" spellcheck="false" aria-describedby="privacy-note"></textarea><p id="privacy-note" class="privacy-note">This playground never sends the text to a provider. Keep production secrets out of demos.</p></div>
+        <div class="panel policy-panel"><div class="panel-head"><div><p class="panel-kicker">02 · Decide</p><h2>Redaction policy</h2></div><span class="policy-status">Local policy</span></div><form id="policy-form"><label class="toggle"><input type="checkbox" name="emails" checked /><span class="switch"></span><span><strong>Email addresses</strong><small>ada@example.com</small></span></label><label class="toggle"><input type="checkbox" name="apiKeys" checked /><span class="switch"></span><span><strong>API key patterns</strong><small>sk-, AKIA, ghp_, xox</small></span></label><label class="toggle"><input type="checkbox" name="bearerTokens" checked /><span class="switch"></span><span><strong>Bearer tokens</strong><small>Authorization headers</small></span></label><label class="toggle"><input type="checkbox" name="phoneNumbers" checked /><span class="switch"></span><span><strong>Phone numbers</strong><small>International formats</small></span></label><label class="toggle"><input type="checkbox" name="ipv4" /><span class="switch"></span><span><strong>IPv4 addresses</strong><small>Disabled by default</small></span></label></form><p class="policy-note">Patterns are a safety net, not complete PII protection.</p></div>
+        <div class="panel output-panel"><div class="panel-head"><div><p class="panel-kicker">03 · Review</p><h2>Redacted preview</h2></div><div class="output-state"><span id="state-label">Protected preview</span><span class="count"><b id="match-count">0</b> matches</span></div></div><pre id="redacted-output" class="output" aria-live="polite"></pre><div class="output-actions"><button id="copy-output" class="primary-button" type="button">Copy redacted preview</button><span class="shortcut">⌘ / Ctrl + Enter to refresh</span></div></div>
+        <aside class="matches panel"><div class="panel-head"><div><p class="panel-kicker">Audit detail</p><h2>What changed</h2></div><span class="local-chip">Never uploaded</span></div><ul id="match-list" class="match-list"></ul></aside>
+      </section>
+      <footer><span>local-ai-redaction-proxy · MIT licensed</span><span>sample mode · generated in your browser</span></footer>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

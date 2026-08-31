@@ -1,0 +1,17 @@
+{
+  "name": "local-ai-redaction-proxy",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check public/redactor.js && node --check public/main.js",
+    "build": "node ./scripts/build.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.97.0"
+  },
+  "license": "MIT"
+}
